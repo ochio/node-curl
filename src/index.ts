@@ -1,5 +1,9 @@
-export const greet = (name: string): string => {
-	return `Hello, ${name}!`;
+import child_process from "node:child_process";
+
+const CUIExec = (argv: string) => {
+	return child_process.execSync(`curl ${argv}`).toString();
 };
 
-console.log(greet("World"));
+if (process.argv[2]) {
+	console.log(CUIExec(process.argv[2]));
+}
